@@ -34,18 +34,14 @@ function Header() {
     <PaginationUl>
       <PaginationLi>
         <NavLink to="/" style={activeStyle}>
-          메인
+          게시판 등록
         </NavLink>
       </PaginationLi>
       <PaginationLi>
-        <NavLink to="/dept" style={activeStyle}>
-          부서
-        </NavLink>
+        <NavLink to="" style={activeStyle}></NavLink>
       </PaginationLi>
       <PaginationLi>
-        <NavLink to="/emp" style={activeStyle}>
-          사원
-        </NavLink>
+        <NavLink to="" style={activeStyle}></NavLink>
       </PaginationLi>
     </PaginationUl>
   );
