@@ -13,9 +13,7 @@ function App() {
   return (
     <AppDiv>
       <Header />
-      <hr />
       <Outlet></Outlet>
-      <hr />
       <Footer />
     </AppDiv>
   );
