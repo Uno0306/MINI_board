@@ -14,9 +14,7 @@ function App() {
     <AppDiv>
       <Header />
       <hr />
-      <div>
-        <Outlet></Outlet>
-      </div>
+      <Outlet></Outlet>
       <hr />
       <Footer />
     </AppDiv>

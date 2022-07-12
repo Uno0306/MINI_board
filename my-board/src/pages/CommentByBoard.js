@@ -8,8 +8,43 @@ import {
 } from "../context/CommentAxios";
 
 const CommentBox = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const CommentDiv = styled.div`
   margin: 10px;
-  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid midnightblue;
+  width: 20em;
+  background: paleturquoise;
+  border-radius: 20px;
+`;
+
+const InputDiv = styled.div`
+  padding-top: 10px;
+`;
+
+const Text = styled.input`
+  height: 20px;
+  border: 0.5px solid black;
+  border-radius: 10px;
+  margin-left: 10px;
+  text-align: center;
+`;
+
+const Button = styled.input`
+  margin: 10px 5px 0 5px;
+  padding: 5px;
+  width: 8em;
+  border: 1px solid dimgray;
+  border-radius: 5px;
+  background: snow;
+
+  &:hover {
+    border: 3px solid dimgray;
+  }
 `;
 
 function CommentByBoard(boardNo) {
@@ -25,7 +60,7 @@ function CommentByBoard(boardNo) {
   return (
     <div>
       <div>
-        <input
+        <Button
           type="button"
           onClick={() => {
             setClickList(!clickList);
@@ -34,37 +69,36 @@ function CommentByBoard(boardNo) {
             comments.length === 0 ? "댓글[0]" : "댓글[" + comments.length + "]"
           }
         />
-        <input
+        <Button
           type="button"
           onClick={() => {
             setClickAdd(!clcikAdd);
           }}
           value="댓글작성"
         />
+        <br />
+        <br />
       </div>
       {clcikAdd ? (
         <CommentBox>
-          <div>
-            <span>
-              댓글 작성자 :{" "}
-              <input
+          <CommentDiv>
+            <InputDiv>
+              <span>댓글 작성자 : </span>
+              <Text
                 type="text"
                 id="inputCommenter"
                 placeholder="작성자를 적어주세요"
               />{" "}
-            </span>
-            <br />
-            <span>
-              댓글 내 용 :{" "}
-              <input
+            </InputDiv>
+            <InputDiv>
+              <span>댓글 내 용 : </span>
+              <Text
                 type="text"
                 id="inputContent"
                 placeholder="댓글을 적어주세요"
               />{" "}
-            </span>
-          </div>
-          <div>
-            <input
+            </InputDiv>
+            <Button
               type="button"
               onClick={() => {
                 insertComment(
@@ -76,7 +110,7 @@ function CommentByBoard(boardNo) {
               }}
               value="작성"
             />
-          </div>
+          </CommentDiv>
         </CommentBox>
       ) : (
         ""
@@ -85,28 +119,25 @@ function CommentByBoard(boardNo) {
         comments.map((data) => {
           return (
             <CommentBox key={data.commentNo}>
-              <div>
-                <span>
-                  댓글 작성자 :{" "}
-                  <input
+              <CommentDiv>
+                <InputDiv>
+                  <span>댓글 작성자 : </span>
+                  <Text
                     type="text"
                     id="updateCommenter"
                     defaultValue={data.commenter}
                     readOnly
                   />{" "}
-                </span>
-                <br />
-                <span>
-                  댓글 내 용 :{" "}
-                  <input
+                </InputDiv>
+                <InputDiv>
+                  <span>댓글 내 용 : </span>
+                  <Text
                     type="text"
                     id="updateContent"
                     defaultValue={data.commentContent}
                   />{" "}
-                </span>
-              </div>
-              <div>
-                <input
+                </InputDiv>
+                <Button
                   type="button"
                   onClick={() => {
                     updateComment(
@@ -118,7 +149,7 @@ function CommentByBoard(boardNo) {
                   }}
                   value="수정"
                 />
-                <input
+                <Button
                   type="button"
                   onClick={() => {
                     deleteComment(data.commentNo);
@@ -126,7 +157,7 @@ function CommentByBoard(boardNo) {
                   }}
                   value="삭제"
                 />
-              </div>
+              </CommentDiv>
             </CommentBox>
           );
         })

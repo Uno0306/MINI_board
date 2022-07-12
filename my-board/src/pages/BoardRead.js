@@ -11,8 +11,36 @@ import CommentByBoard from "./CommentByBoard";
 
 const Scroll = styled.div`
   text-align: center;
-  max-height: 600px;
+  height: 80vh;
+  max-height: 80vh;
   overflow-y: auto;
+`;
+
+const Ptag = styled.p`
+  font-size: 20px;
+  margin: 15px 3px 3px 3px;
+  font-weight: 540;
+`;
+
+const Text = styled.input`
+  height: 20px;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-align: center;
+`;
+
+const Button = styled.input`
+  margin: 10px 5px 0 5px;
+  padding: 5px;
+  width: 8em;
+  border: 1px solid dimgray;
+  border-radius: 5px;
+  background: ghostwhite;
+
+  &:hover {
+    border: 3px solid dimgray;
+  }
 `;
 
 function BoardRead() {
@@ -28,8 +56,8 @@ function BoardRead() {
     <Scroll>
       <h2>게시판 보기</h2>
       <div>
-        <h4>제목</h4>
-        <input
+        <Ptag>제목</Ptag>
+        <Text
           type="text"
           id="title"
           placeholder="제목을 입력해주세요"
@@ -37,8 +65,8 @@ function BoardRead() {
         />
       </div>
       <div>
-        <h4>내용</h4>
-        <input
+        <Ptag>내용</Ptag>
+        <Text
           type="textarea"
           id="content"
           placeholder="내용을 입력해주세요"
@@ -46,8 +74,8 @@ function BoardRead() {
         />
       </div>
       <div>
-        <h4>작성자</h4>
-        <input
+        <Ptag>작성자</Ptag>
+        <Text
           type="text"
           id="contenter"
           placeholder="작성자이메일을 입력해주세요"
@@ -55,8 +83,8 @@ function BoardRead() {
         />
       </div>
       <div>
-        <h4>등록일</h4>
-        <input
+        <Ptag>등록일</Ptag>
+        <Text
           type="text"
           id="registered"
           placeholder="등록일"
@@ -67,8 +95,8 @@ function BoardRead() {
         />
       </div>
       <div>
-        <h4>수정일</h4>
-        <input
+        <Ptag>수정일</Ptag>
+        <Text
           type="text"
           id="modified"
           placeholder="수정일"
@@ -80,14 +108,14 @@ function BoardRead() {
       </div>
       <br />
       <div>
-        <input
+        <Button
           type="button"
           onClick={() => {
             navigate("/");
           }}
           value="리스트로"
         />
-        <input
+        <Button
           type="button"
           onClick={() => {
             updateBoard(
@@ -99,7 +127,7 @@ function BoardRead() {
           }}
           value="수정하기"
         />
-        <input
+        <Button
           type="button"
           onClick={() => {
             deleteBoard(boardNo);
