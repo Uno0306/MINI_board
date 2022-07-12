@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 const PaginationUl = styled.ul`
   list-style: none;
@@ -31,19 +31,19 @@ function Header() {
   }
 
   return (
-    <PaginationUl>
-      <PaginationLi>
-        <NavLink to="/" style={activeStyle}>
-          게시판 등록
-        </NavLink>
-      </PaginationLi>
-      <PaginationLi>
-        <NavLink to="" style={activeStyle}></NavLink>
-      </PaginationLi>
-      <PaginationLi>
-        <NavLink to="" style={activeStyle}></NavLink>
-      </PaginationLi>
-    </PaginationUl>
+    <div></div>
+    // <PaginationUl>
+    //   <PaginationLi>
+    //     <NavLink to="/" style={activeStyle}>
+    //       게시판
+    //     </NavLink>
+    //   </PaginationLi>
+    //   <PaginationLi>
+    //     <Link to="/dept" style={activeStyle}>
+    //       등록
+    //     </Link>
+    //   </PaginationLi>
+    // </PaginationUl>
   );
 }
 
