@@ -24,6 +24,16 @@ const Ptag = styled.p`
 
 const Text = styled.input`
   height: 20px;
+  width: 400px;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-align: center;
+`;
+
+const TextArea = styled.input`
+  height: 6.25em;
+  width: 400px;
   border: 0.5px solid black;
   border-radius: 5px;
   margin-left: 10px;
@@ -54,7 +64,7 @@ function BoardRead() {
 
   return (
     <Scroll>
-      <h2>게시판 보기</h2>
+      <h1>게시판 보기</h1>
       <div>
         <Ptag>제목</Ptag>
         <Text
@@ -66,7 +76,7 @@ function BoardRead() {
       </div>
       <div>
         <Ptag>내용</Ptag>
-        <Text
+        <TextArea
           type="textarea"
           id="content"
           placeholder="내용을 입력해주세요"

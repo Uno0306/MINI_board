@@ -2,9 +2,48 @@ import React from "react";
 import { InsertBoard } from "../context/BoardAxios";
 import styled from "styled-components";
 
-const Center = styled.div`
+const Scroll = styled.div`
   text-align: center;
-  height: 600px;
+  height: 80vh;
+  max-height: 80vh;
+  overflow-y: auto;
+`;
+
+const Ptag = styled.p`
+  font-size: 20px;
+  margin: 15px 3px 3px 3px;
+  font-weight: 540;
+`;
+
+const Text = styled.input`
+  height: 20px;
+  width: 400px;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-align: center;
+`;
+
+const TextArea = styled.input`
+  height: 6.25em;
+  width: 400px;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-align: center;
+`;
+
+const Button = styled.input`
+  margin: 10px 5px 0 5px;
+  padding: 5px;
+  width: 8em;
+  border: 1px solid dimgray;
+  border-radius: 5px;
+  background: ghostwhite;
+
+  &:hover {
+    border: 3px solid dimgray;
+  }
 `;
 
 function AddBoard() {
@@ -40,33 +79,37 @@ function AddBoard() {
   }
 
   return (
-    <Center>
-      <h2>게시판 등록</h2>
+    <Scroll>
+      <h1>게시판 등록</h1>
       <div>
-        <h4>제목</h4>
-        <input type="text" id="title" placeholder="제목을 입력해주세요" />
+        <Ptag>제목</Ptag>
+        <Text type="text" id="title" placeholder="제목을 입력해주세요" />
       </div>
       <div>
-        <h4>내용</h4>
-        <input type="textarea" id="content" placeholder="내용을 입력해주세요" />
+        <Ptag>내용</Ptag>
+        <TextArea
+          type="textarea"
+          id="content"
+          placeholder="내용을 입력해주세요"
+        />
       </div>
       <div>
-        <h4>작성자</h4>
-        <input
+        <Ptag>작성자</Ptag>
+        <Text
           type="text"
           id="contenter"
           placeholder="작성자이메일을 입력해주세요"
         />
       </div>
       <br />
-      <input
+      <Button
         type="button"
         onClick={() => {
           checkInsert();
         }}
         value="등록"
       />
-    </Center>
+    </Scroll>
   );
 }
 
