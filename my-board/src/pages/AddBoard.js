@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React from "react";
+import { InsertBoard } from "../context/BoardAxios";
 
-function InsertBoard() {
-  const navigate = useNavigate();
-
+function AddBoard() {
   function checkInsert() {
     var title = document.getElementById("title");
     var content = document.getElementById("content");
@@ -32,24 +29,7 @@ function InsertBoard() {
         contenterValue === ""
       )
     ) {
-      const url = "/api/board";
-      const inputDept = {
-        boardTitle: titleValue,
-        boardContent: contentValue,
-        user: {
-          userEmail: contenterValue,
-        },
-      };
-      const headers = {
-        "Content-Type": "application/json",
-      };
-      axios.post(url, inputDept, { headers }).catch((error) => {
-        console.log(error);
-      });
-
-      // 추가 완료 후, 페이지 이동
-      //   navigate("/");
-      window.location.href = "/";
+      InsertBoard(titleValue, contentValue, contenterValue);
     }
   }
 
@@ -84,4 +64,4 @@ function InsertBoard() {
   );
 }
 
-export default InsertBoard;
+export default AddBoard;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { selectBoardList, minusPage, plusPage } from "../context/BoardAxios";
 import styled from "styled-components";
-import dateFormat, { masks } from "dateformat";
+import dateFormat from "dateformat";
 
 const PaginationSpan = styled.span`
   &[aria-current] {
@@ -20,7 +20,7 @@ const BoardTable = styled.table`
   }
 `;
 
-function Domain() {
+function MainBoard() {
   const [page, setPage] = useState(1);
   const [boardList, setBoardList] = useState([]);
 
@@ -105,4 +105,4 @@ function Domain() {
   );
 }
 
-export default Domain;
+export default MainBoard;

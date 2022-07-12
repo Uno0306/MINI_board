@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { selectBoardByBoardNo } from "../context/BoardAxios";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  selectBoardByBoardNo,
+  updateBoard,
+  deleteBoard,
+} from "../context/BoardAxios";
 import styled from "styled-components";
 import dateFormat from "dateformat";
 import CommentByBoard from "./CommentByBoard";
@@ -15,14 +19,11 @@ function BoardRead() {
   const navigate = useNavigate();
   const boardNo = useParams().boardNo;
   const [board, setBoard] = useState();
-  //   const [page, setPage] = useState(1);
-  //   const [boardList, setBoardList] = useState([]);
 
   useEffect(() => {
-    selectBoardByBoardNo(boardNo, setBoard, board);
-  }, []);
+    selectBoardByBoardNo(boardNo, setBoard);
+  }, [boardNo]);
 
-  console.log(board);
   return (
     <Scroll>
       <h2>게시판 보기</h2>
@@ -40,7 +41,7 @@ function BoardRead() {
         <input
           type="textarea"
           id="content"
-          placeholder="내요을 입력해주세요"
+          placeholder="내용을 입력해주세요"
           defaultValue={board ? board.boardContent : ""}
         />
       </div>
@@ -62,6 +63,7 @@ function BoardRead() {
           defaultValue={
             board ? dateFormat(board.registeredDate, "yyyy-mm-dd") : ""
           }
+          readOnly
         />
       </div>
       <div>
@@ -73,6 +75,7 @@ function BoardRead() {
           defaultValue={
             board ? dateFormat(board.modifiedDate, "yyyy-mm-dd") : ""
           }
+          readOnly
         />
       </div>
       <br />
@@ -87,14 +90,18 @@ function BoardRead() {
         <input
           type="button"
           onClick={() => {
-            // navigate("/");
+            updateBoard(
+              document.getElementById("title").value,
+              document.getElementById("content").value,
+              document.getElementById("contenter").value
+            );
           }}
           value="수정하기"
         />
         <input
           type="button"
           onClick={() => {
-            // navigate("/");
+            deleteBoard(boardNo);
           }}
           value="삭제하기"
         />

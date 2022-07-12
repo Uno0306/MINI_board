@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Domain from "./components/Domain";
+import MainBoard from "./components/MainBoard";
 import NotFound from "./pages/NotFound";
-import InsertBoard from "./pages/InsertBoard";
+import AddBoard from "./pages/AddBoard";
 import BoardRead from "./pages/BoardRead";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -14,8 +14,8 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<Domain />} />
-        <Route path="/registration" element={<InsertBoard />} />
+        <Route index element={<MainBoard />} />
+        <Route path="/registration" element={<AddBoard />} />
         <Route path="/read/:boardNo" element={<BoardRead />} />
         <Route path="*" element={<NotFound />} />
       </Route>
