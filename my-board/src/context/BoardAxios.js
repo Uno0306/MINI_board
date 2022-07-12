@@ -16,11 +16,13 @@ export const selectBoardList = async (setBoardList, page) => {
 };
 
 export const minusPage = async (page, setPage) => {
-  await setPage(parseInt(page) - 1);
+  await setPage(parseInt(page) - 10);
 };
 
-export const plusPage = async (page, setPage) => {
-  await setPage(parseInt(page) + 1);
+export const plusPage = async (page, setPage, totalPage) => {
+  (await (parseInt(page) + 10)) <= totalPage
+    ? setPage(parseInt(page) + 10)
+    : setPage(totalPage);
 };
 
 export const selectBoardByBoardNo = async (boardNo, setBoard) => {

@@ -33,7 +33,7 @@ function Header() {
   return (
     <PaginationUl>
       <PaginationLi>
-        <NavLink to="/" style={activeStyle}>
+        <NavLink to={"/"} style={activeStyle}>
           게시판
         </NavLink>
       </PaginationLi>

@@ -1,5 +1,10 @@
 import React from "react";
 import { InsertBoard } from "../context/BoardAxios";
+import styled from "styled-components";
+
+const Center = styled.div`
+  text-align: center;
+`;
 
 function AddBoard() {
   function checkInsert() {
@@ -34,7 +39,7 @@ function AddBoard() {
   }
 
   return (
-    <div>
+    <Center>
       <h2>게시판 등록</h2>
       <div>
         <h4>제목</h4>
@@ -60,7 +65,7 @@ function AddBoard() {
         }}
         value="등록"
       />
-    </div>
+    </Center>
   );
 }
 
