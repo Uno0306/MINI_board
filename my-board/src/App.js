@@ -3,10 +3,15 @@ import React from "react";
 import { Link, Outlet, NavLink } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import styled from "styled-components";
+
+const AppDiv = styled.div`
+  height: 100%;
+`;
 
 function App() {
   return (
-    <div>
+    <AppDiv>
       <Header />
       <hr />
       <div>
@@ -14,7 +19,7 @@ function App() {
       </div>
       <hr />
       <Footer />
-    </div>
+    </AppDiv>
   );
 }
 

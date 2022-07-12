@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Domain from "./components/Domain";
 import NotFound from "./pages/NotFound";
+import InsertBoard from "./pages/InsertBoard";
+import BoardRead from "./pages/BoardRead";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,6 +15,8 @@ root.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Domain />} />
+        <Route path="/registration" element={<InsertBoard />} />
+        <Route path="/read/:boardNo" element={<BoardRead />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { selectBoardList, minusPage, plusPage } from "../context/BoardAxios";
 import styled from "styled-components";
 import dateFormat, { masks } from "dateformat";
@@ -29,7 +30,9 @@ function Domain() {
 
   return (
     <div>
-      <h2>게시판</h2>
+      <h2>
+        게시판 <Link to="/registration">등록</Link>
+      </h2>
       <br />
       <div id="boardList">
         {boardList.dtoList && boardList.dtoList.length !== 0 ? (
@@ -47,7 +50,11 @@ function Domain() {
                 return (
                   <tr key={data.boardNo}>
                     <td>{data.boardNo}</td>
-                    <td>{data.boardTitle}</td>
+                    <td>
+                      <Link to={"/read/" + data.boardNo}>
+                        {data.boardTitle}
+                      </Link>
+                    </td>
                     <td>{data.user.userName}</td>
                     <td>{dateFormat(data.registeredDate, "yyyy-mm-dd")}</td>
                   </tr>
@@ -62,7 +69,6 @@ function Domain() {
           {boardList.prev && (
             <button
               onClick={() => {
-                console.log("prev");
                 minusPage(page, setPage);
               }}
             >
@@ -87,7 +93,6 @@ function Domain() {
           {boardList.next && (
             <button
               onClick={() => {
-                console.log("next");
                 plusPage(page, setPage);
               }}
             >

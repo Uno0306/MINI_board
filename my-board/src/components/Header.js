@@ -26,24 +26,18 @@ function Header() {
     return {
       textDecoration: "none",
       fontSize: isActive ? "32px" : undefined,
-      color: isActive ? "green" : "black",
+      color: isActive ? "#3A83BB" : "black",
     };
   }
 
   return (
-    <div></div>
-    // <PaginationUl>
-    //   <PaginationLi>
-    //     <NavLink to="/" style={activeStyle}>
-    //       게시판
-    //     </NavLink>
-    //   </PaginationLi>
-    //   <PaginationLi>
-    //     <Link to="/dept" style={activeStyle}>
-    //       등록
-    //     </Link>
-    //   </PaginationLi>
-    // </PaginationUl>
+    <PaginationUl>
+      <PaginationLi>
+        <NavLink to="/" style={activeStyle}>
+          게시판
+        </NavLink>
+      </PaginationLi>
+    </PaginationUl>
   );
 }
 
