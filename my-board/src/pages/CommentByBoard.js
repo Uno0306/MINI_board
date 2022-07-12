@@ -20,7 +20,7 @@ function CommentByBoard(boardNo) {
 
   useEffect(() => {
     selectCommentByBoardNo(boardNoValue, setComments);
-  }, [clickList, clcikAdd]);
+  }, [clickList, clcikAdd, boardNoValue]);
 
   return (
     <div>
@@ -28,7 +28,6 @@ function CommentByBoard(boardNo) {
         <input
           type="button"
           onClick={() => {
-            selectCommentByBoardNo(boardNoValue, setComments);
             setClickList(!clickList);
           }}
           value={
@@ -82,7 +81,7 @@ function CommentByBoard(boardNo) {
       ) : (
         ""
       )}
-      {clickList && comments && comments.length != 0 ? (
+      {clickList && comments && comments.length !== 0 ? (
         comments.map((data) => {
           return (
             <CommentBox key={data.commentNo}>
@@ -131,6 +130,8 @@ function CommentByBoard(boardNo) {
             </CommentBox>
           );
         })
+      ) : comments.length !== 0 ? (
+        <span>댓글을 보시려면 [댓글] 버튼을 눌러주세요</span>
       ) : (
         <div>
           <span>아직 댓글이 없습니다.</span>

@@ -91,6 +91,7 @@ function BoardRead() {
           type="button"
           onClick={() => {
             updateBoard(
+              boardNo,
               document.getElementById("title").value,
               document.getElementById("content").value,
               document.getElementById("contenter").value

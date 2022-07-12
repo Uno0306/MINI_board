@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { selectBoardList, minusPage, plusPage } from "../context/BoardAxios";
-
 import styled from "styled-components";
 import dateFormat from "dateformat";
 
 const Center = styled.div`
   text-align: center;
+  height: 600px;
 `;
 
 const PaginationSpan = styled.span`

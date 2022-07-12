@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const Center = styled.div`
   text-align: center;
+  height: 600px;
 `;
 
 function AddBoard() {

@@ -36,9 +36,10 @@ export const selectBoardByBoardNo = async (boardNo, setBoard) => {
     .catch((error) => console.log(error));
 };
 
-export const updateBoard = async (title, content, contenter) => {
+export const updateBoard = async (boardNo, title, content, contenter) => {
   const urlStr = URL;
   const inputDept = {
+    boardNo: boardNo,
     boardTitle: title,
     boardContent: content,
     user: {
@@ -52,6 +53,9 @@ export const updateBoard = async (title, content, contenter) => {
   await axios.put(urlStr, inputDept, { headers }).catch((error) => {
     console.log(error);
   });
+
+  // 수정 완료 후, 페이지 이동
+  window.location.href = "/";
 };
 
 export const InsertBoard = async (boardTitle, boardContent, userEmail) => {
