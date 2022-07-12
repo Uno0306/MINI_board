@@ -74,18 +74,11 @@ const Alignment = styled.div`
 `;
 
 const PageDiv = styled.div`
-  margin-top: 10px;
-  border: 1px solid black;
-  width: 80vw;
-  height: 20px;
+  margin-top: 20px;
 `;
 
 const PageSpan = styled.span`
   color: black;
-  padding-left: 5px;
-  padding-right: 5px;
-  height: 100%;
-  border: 1px solid black;
   &:hover {
     color: white;
     background: turquoise;
@@ -95,33 +88,22 @@ const PageSpan = styled.span`
 
 const PaginationSpan = styled.span`
   text-align: center;
+  border: 1px solid black;
+  padding: 5px 5px 5px 5px;
   &[aria-current] {
     background-color: mediumslateblue;
     color: white;
-    border-radius: 20px;
-  }
-`;
-const Button = styled.button`
-  text-align: center;
-  border: 1px solid black;
-  background: white;
-  width: 3em;
-  padding-top: 0;
-  &:hover {
-    border: 3px solid black;
   }
 `;
 
-const IButton = styled.input`
+const IButton = styled.span`
   text-align: center;
   border: 1px solid black;
   background: white;
-  padding-top: 0;
+  padding: 5px 5px 5px 5px;
   margin-top: 0;
-  width: 3em;
-  height: 100%;
   &:hover {
-    border: 3px solid black;
+    border: 3px solid turquoise;
   }
 `;
 
@@ -194,13 +176,13 @@ function MainBoard() {
         <Alignment>
           <PageDiv>
             {boardList.page > 10 && boardList.prev && (
-              <Button
+              <IButton
                 onClick={() => {
                   minusPage(page, setPage);
                 }}
               >
                 prev
-              </Button>
+              </IButton>
             )}
             {boardList.pageList &&
               boardList.pageList.map((number) => {
@@ -222,12 +204,12 @@ function MainBoard() {
               })}
             {!(boardList.end === boardList.totalPage) && boardList.next && (
               <IButton
-                type="button"
                 onClick={() => {
                   plusPage(page, setPage, boardList.totalPage);
                 }}
-                value="next"
-              />
+              >
+                next
+              </IButton>
             )}
           </PageDiv>
         </Alignment>
