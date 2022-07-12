@@ -47,7 +47,7 @@ function AddBoard() {
       </div>
       <div>
         <h4>내용</h4>
-        <input type="textarea" id="content" placeholder="내요을 입력해주세요" />
+        <input type="textarea" id="content" placeholder="내용을 입력해주세요" />
       </div>
       <div>
         <h4>작성자</h4>

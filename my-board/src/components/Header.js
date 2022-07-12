@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 const PaginationUl = styled.ul`
   list-style: none;
@@ -33,7 +33,7 @@ function Header() {
   return (
     <PaginationUl>
       <PaginationLi>
-        <NavLink to={"/"} style={activeStyle}>
+        <NavLink to="/" style={activeStyle}>
           게시판
         </NavLink>
       </PaginationLi>

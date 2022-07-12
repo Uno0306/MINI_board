@@ -12,6 +12,19 @@ export const selectCommentByBoardNo = async (boardNo, setComments) => {
     });
 };
 
+// export const commentCount = async (boardNo, setLength) => {
+//   const urlStr = URL + "/comments/" + boardNo;
+//   await axios
+//     .get(urlStr)
+//     .then((response) => response.data)
+//     .then((data) => {
+//       setLength(data.length);
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
+
 export const insertComment = async (commenter, commentContent, boardNo) => {
   const urlStr = URL;
   const inputComment = {

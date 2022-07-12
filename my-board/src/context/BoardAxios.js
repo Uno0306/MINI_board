@@ -20,9 +20,9 @@ export const minusPage = async (page, setPage) => {
 };
 
 export const plusPage = async (page, setPage, totalPage) => {
-  (await (parseInt(page) + 10)) <= totalPage
-    ? setPage(parseInt(page) + 10)
-    : setPage(totalPage);
+  parseInt(page) + 10 <= totalPage
+    ? await setPage(parseInt(page) + 10)
+    : await setPage(totalPage);
 };
 
 export const selectBoardByBoardNo = async (boardNo, setBoard) => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { selectBoardList, minusPage, plusPage } from "../context/BoardAxios";
-import { selectCommentByBoardNo } from "../context/CommentAxios";
+
 import styled from "styled-components";
 import dateFormat from "dateformat";
 
@@ -28,7 +28,7 @@ const BoardTable = styled.table`
 function MainBoard() {
   const [page, setPage] = useState(1);
   const [boardList, setBoardList] = useState([]);
-  const [comments, setComments] = useState([]);
+  // const [length, setLength] = useState(0);
 
   useEffect(() => {
     selectBoardList(setBoardList, page);
@@ -54,18 +54,13 @@ function MainBoard() {
               </thead>
               <tbody>
                 {boardList.dtoList.map((data) => {
-                  {
-                    // selectCommentByBoardNo(data.boardNo, setComments);
-                  }
                   return (
                     <tr key={data.boardNo}>
                       <td>{data.boardNo}</td>
                       <td>
                         <Link to={"/read/" + data.boardNo}>
                           {data.boardTitle}
-                          {/* {comments.length === 0
-                            ? ""
-                            : " [" + comments.length + "]"} */}
+                          {" [" + data.comments.length + "] "}
                         </Link>
                       </td>
                       <td>{data.user.userName}</td>
