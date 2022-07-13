@@ -10,6 +10,7 @@ import {
   TdTitle,
   TdCommenter,
   TdDate,
+  Img,
   Border,
   BlackSpan,
   Alignment,
@@ -19,10 +20,19 @@ import {
   IButton,
 } from "../styles/StyleMB";
 import dateFormat from "dateformat";
+import "../asset/new.png";
 
 function MainBoard() {
   const [page, setPage] = useState(1);
   const [boardList, setBoardList] = useState([]);
+
+  const today = dateFormat(new Date(), "yyyymmdd");
+  const dte = dateFormat(new Date("2022-07-11"), "yyyymmdd");
+
+  const day = today - dte;
+  console.log(today);
+  console.log(dte);
+  console.log(day);
 
   useEffect(() => {
     selectBoardList(setBoardList, page);
@@ -70,6 +80,13 @@ function MainBoard() {
                           <BlackSpan>
                             {data.boardTitle}
                             {" [" + data.comments.length + "] "}
+                            {today -
+                              dateFormat(data.registeredDate, "yyyymmdd") <=
+                            1 ? (
+                              <Img src="/asset/new.png" alt="new" />
+                            ) : (
+                              ""
+                            )}
                           </BlackSpan>
                         </Link>
                       </TdTitle>

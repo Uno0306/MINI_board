@@ -26,6 +26,8 @@ export const THead = styled.thead`
   height: 3em;
   font-size: 30px;
   font-weight: 550;
+  color: white;
+  background: deepskyblue;
 `;
 
 export const TdNo = styled.td`
@@ -41,6 +43,10 @@ export const TdCommenter = styled.td`
 
 export const TdDate = styled.td`
   width: 20vw;
+`;
+
+export const Img = styled.img`
+  width: 20px;
 `;
 
 export const Border = styled.span`

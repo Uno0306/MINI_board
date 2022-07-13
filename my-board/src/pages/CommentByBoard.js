@@ -90,7 +90,7 @@ function CommentByBoard(boardNo) {
                   <span>댓글 작성자 : </span>
                   <Text
                     type="text"
-                    id="updateCommenter"
+                    id={"updateCommenter" + data.commentNo}
                     defaultValue={data.commenter}
                     readOnly
                   />{" "}
@@ -99,7 +99,7 @@ function CommentByBoard(boardNo) {
                   <span>댓글 내 용 : </span>
                   <Text
                     type="text"
-                    id="updateContent"
+                    id={"updateContent" + data.commentNo}
                     defaultValue={data.commentContent}
                   />{" "}
                 </InputDiv>
@@ -108,8 +108,11 @@ function CommentByBoard(boardNo) {
                   onClick={() => {
                     updateComment(
                       data.commentNo,
-                      document.getElementById("updateCommenter").value,
-                      document.getElementById("updateContent").value,
+                      document.getElementById(
+                        "updateCommenter" + data.commentNo
+                      ).value,
+                      document.getElementById("updateContent" + data.commentNo)
+                        .value,
                       boardNoValue
                     );
                   }}
