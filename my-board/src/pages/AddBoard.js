@@ -1,12 +1,13 @@
 import React from "react";
 import { InsertBoard } from "../context/BoardAxios";
 import { Scroll, Ptag, Text, TextArea, Button } from "../styles/StyleAB";
+import { handleOnInput } from "../context/BoardFunc";
 
 function AddBoard() {
   function checkInsert() {
-    var title = document.getElementById("title");
-    var content = document.getElementById("content");
-    var contenter = document.getElementById("contenter");
+    const title = document.getElementById("title");
+    const content = document.getElementById("content");
+    const contenter = document.getElementById("contenter");
     const titleValue = title.value;
     const contentValue = content.value;
     const contenterValue = contenter.value;
@@ -39,7 +40,12 @@ function AddBoard() {
       <h1>게시판 등록</h1>
       <div>
         <Ptag>제목</Ptag>
-        <Text type="text" id="title" placeholder="제목을 입력해주세요" />
+        <Text
+          type="text"
+          id="title"
+          placeholder="제목을 입력해주세요"
+          onInput={(e) => handleOnInput(e.target, 30)}
+        />
       </div>
       <div>
         <Ptag>내용</Ptag>
@@ -55,6 +61,7 @@ function AddBoard() {
           type="text"
           id="contenter"
           placeholder="작성자이메일을 입력해주세요"
+          onInput={(e) => handleOnInput(e.target, 40)}
         />
       </div>
       <br />

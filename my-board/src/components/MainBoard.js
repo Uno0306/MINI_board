@@ -1,38 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { selectBoardList, minusPage, plusPage } from "../context/BoardAxios";
+import { selectBoardList } from "../context/BoardAxios";
 import {
   Scroll,
   CommentBox,
   BoardTable,
   THead,
-  TdNo,
-  TdTitle,
-  TdCommenter,
-  TdDate,
+  TR,
   Img,
   Border,
   BlackSpan,
-  Alignment,
-  PageDiv,
-  PageSpan,
-  PaginationSpan,
-  IButton,
 } from "../styles/StyleMB";
 import dateFormat from "dateformat";
-import "../asset/new.png";
+import Alignment from "../MainBoard/Alignment";
 
 function MainBoard() {
   const [page, setPage] = useState(1);
   const [boardList, setBoardList] = useState([]);
 
-  const today = dateFormat(new Date(), "yyyymmdd");
-  const dte = dateFormat(new Date("2022-07-11"), "yyyymmdd");
-
-  const day = today - dte;
-  console.log(today);
-  console.log(dte);
-  console.log(day);
+  const today = dateFormat(new Date(), "yyyymmddHHMMss");
 
   useEffect(() => {
     selectBoardList(setBoardList, page);
@@ -58,19 +44,19 @@ function MainBoard() {
           <CommentBox>
             <BoardTable>
               <THead>
-                <tr>
-                  <TdNo>#</TdNo>
-                  <TdTitle>제목</TdTitle>
-                  <TdCommenter>작성자</TdCommenter>
-                  <TdDate>등록일</TdDate>
-                </tr>
+                <TR>
+                  <td>#</td>
+                  <td>제목</td>
+                  <td>작성자</td>
+                  <td>등록일</td>
+                </TR>
               </THead>
               <tbody>
                 {boardList.dtoList.map((data) => {
                   return (
-                    <tr key={data.boardNo}>
-                      <TdNo>{data.boardNo}</TdNo>
-                      <TdTitle>
+                    <TR key={data.boardNo}>
+                      <td>{data.boardNo}</td>
+                      <td>
                         <Link
                           to={"/read/" + data.boardNo}
                           style={{
@@ -80,21 +66,19 @@ function MainBoard() {
                           <BlackSpan>
                             {data.boardTitle}
                             {" [" + data.comments.length + "] "}
-                            {today -
-                              dateFormat(data.registeredDate, "yyyymmdd") <=
-                            1 ? (
-                              <Img src="/asset/new.png" alt="new" />
-                            ) : (
-                              ""
-                            )}
-                          </BlackSpan>
+                          </BlackSpan>{" "}
+                          {today -
+                            dateFormat(data.registeredDate, "yyyymmddHHMMss") <=
+                          1000000 ? (
+                            <Img src="/asset/new.png" alt="new" />
+                          ) : (
+                            ""
+                          )}
                         </Link>
-                      </TdTitle>
-                      <TdCommenter>{data.user.userName}</TdCommenter>
-                      <TdDate>
-                        {dateFormat(data.registeredDate, "yyyy-mm-dd")}
-                      </TdDate>
-                    </tr>
+                      </td>
+                      <td>{data.user.userName}</td>
+                      <td>{dateFormat(data.registeredDate, "yyyy-mm-dd")}</td>
+                    </TR>
                   );
                 })}
               </tbody>
@@ -103,46 +87,7 @@ function MainBoard() {
         ) : (
           <p>테이블이 없습니다.</p>
         )}
-        <Alignment>
-          <PageDiv>
-            {boardList.page > 10 && boardList.prev && (
-              <IButton
-                onClick={() => {
-                  minusPage(page, setPage);
-                }}
-              >
-                prev
-              </IButton>
-            )}
-            {boardList.pageList &&
-              boardList.pageList.map((number) => {
-                return (
-                  <PageSpan key={number}>
-                    <PaginationSpan
-                      id={number}
-                      key={number}
-                      onClick={(e) => {
-                        setPage(e.target.id);
-                      }}
-                      aria-current={parseInt(page) === number ? "page" : null}
-                    >
-                      {" "}
-                      {number}{" "}
-                    </PaginationSpan>
-                  </PageSpan>
-                );
-              })}
-            {!(boardList.end === boardList.totalPage) && boardList.next && (
-              <IButton
-                onClick={() => {
-                  plusPage(page, setPage, boardList.totalPage);
-                }}
-              >
-                next
-              </IButton>
-            )}
-          </PageDiv>
-        </Alignment>
+        <Alignment boardList={boardList} page={page} setPage={setPage} />
       </div>
     </Scroll>
   );

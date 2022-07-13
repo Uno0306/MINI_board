@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const URL = "/api/board";
-
 export const InsertBoard = async (boardTitle, boardContent, userEmail) => {
-  const urlStr = URL;
+  const urlStr = process.env.REACT_APP_URL_BOARD;
   const inputBoard = {
     boardTitle: boardTitle,
     boardContent: boardContent,
@@ -11,18 +9,18 @@ export const InsertBoard = async (boardTitle, boardContent, userEmail) => {
       userEmail: userEmail,
     },
   };
-  const headers = {
-    "Content-Type": "application/json",
-  };
-  axios.post(urlStr, inputBoard, { headers }).catch((error) => {
-    console.log(error);
-  });
+  axios
+    .post(urlStr, inputBoard, process.env.REACT_APP_HEADER)
+    .catch((error) => {
+      console.log(error);
+    });
 
   window.location.href = "/";
 };
 
 export const selectBoardList = async (setBoardList, page) => {
-  const urlStr = URL + "/boardlist?page=" + page + "&size=10";
+  const urlStr =
+    process.env.REACT_APP_URL_BOARD + "/boardlist?page=" + page + "&size=10";
   await axios
     .get(urlStr)
     .then((response) => {
@@ -45,7 +43,7 @@ export const plusPage = async (page, setPage, totalPage) => {
 };
 
 export const selectBoardByBoardNo = async (boardNo, setBoard) => {
-  const urlStr = URL + "/" + boardNo;
+  const urlStr = process.env.REACT_APP_URL_BOARD + "/" + boardNo;
   await axios
     .get(urlStr)
     .then((response) => response.data)
@@ -56,7 +54,7 @@ export const selectBoardByBoardNo = async (boardNo, setBoard) => {
 };
 
 export const updateBoard = async (boardNo, title, content, contenter) => {
-  const urlStr = URL;
+  const urlStr = process.env.REACT_APP_URL_BOARD;
   const inputBoard = {
     boardNo: boardNo,
     boardTitle: title,
@@ -65,19 +63,18 @@ export const updateBoard = async (boardNo, title, content, contenter) => {
       userEmail: contenter,
     },
   };
-  const headers = {
-    "Content-Type": "application/json",
-  };
 
-  await axios.put(urlStr, inputBoard, { headers }).catch((error) => {
-    console.log(error);
-  });
+  await axios
+    .put(urlStr, inputBoard, process.env.REACT_APP_HEADER)
+    .catch((error) => {
+      console.log(error);
+    });
 
   window.location.href = "/";
 };
 
 export const deleteBoard = async (boardNo) => {
-  const urlStr = URL + "/" + boardNo;
+  const urlStr = process.env.REACT_APP_URL_BOARD + "/" + boardNo;
   await axios.delete(urlStr).catch((error) => console.log(error));
 
   window.location.href = "/";

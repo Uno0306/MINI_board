@@ -8,6 +8,7 @@ import {
 import { Scroll, Ptag, Text, TextArea, Button } from "../styles/StyleBR";
 import dateFormat from "dateformat";
 import CommentByBoard from "./CommentByBoard";
+import { handleOnInput } from "../context/BoardFunc";
 
 function BoardRead() {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ function BoardRead() {
           id="title"
           placeholder="제목을 입력해주세요"
           defaultValue={board ? board.boardTitle : ""}
+          onInput={(e) => handleOnInput(e.target, 30)}
         />
       </div>
       <div>
@@ -46,6 +48,7 @@ function BoardRead() {
           id="contenter"
           placeholder="작성자이메일을 입력해주세요"
           defaultValue={board ? board.user.id : ""}
+          onInput={(e) => handleOnInput(e.target, 40)}
         />
       </div>
       <div>

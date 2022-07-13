@@ -22,7 +22,7 @@ export const Text = styled.input`
   text-align: center;
 `;
 
-export const TextArea = styled.input`
+export const TextArea = styled.textarea`
   height: 6.25em;
   width: 400px;
   border: 0.5px solid black;

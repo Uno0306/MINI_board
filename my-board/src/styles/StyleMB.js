@@ -30,19 +30,19 @@ export const THead = styled.thead`
   background: deepskyblue;
 `;
 
-export const TdNo = styled.td`
-  width: 15vw;
-`;
-
-export const TdTitle = styled.td`
-  width: 35vw;
-`;
-export const TdCommenter = styled.td`
-  width: 25vw;
-`;
-
-export const TdDate = styled.td`
-  width: 20vw;
+export const TR = styled.tr`
+  td:nth-child(1) {
+    width: 15vw;
+  }
+  td:nth-child(2) {
+    width: 35vw;
+  }
+  td:nth-child(3) {
+    width: 25vw;
+  }
+  td:nth-child(4) {
+    width: 20vw;
+  }
 `;
 
 export const Img = styled.img`
@@ -66,11 +66,11 @@ export const BlackSpan = styled.span`
   &:hover {
     color: white;
     background: turquoise;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 `;
 
-export const Alignment = styled.div`
+export const Alignments = styled.div`
   display: flex;
   justify-content: center;
 `;

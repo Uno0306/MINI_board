@@ -1,28 +1,24 @@
 import axios from "axios";
-const URL = "/api/user";
 
 export const insertUser = async (userEmail, userName, userPassword) => {
   console.log(userEmail);
   console.log(userName);
   console.log(userPassword);
-  const urlStr = URL;
+  const urlStr = process.env.REACT_APP_URL_USER;
   const inputUser = {
     userEmail: userEmail,
     userName: userName,
     userPassword: userPassword,
   };
-  const headers = {
-    "Content-Type": "application/json",
-  };
   await axios
-    .post(urlStr, inputUser, { headers })
+    .post(urlStr, inputUser, process.env.REACT_APP_HEADER)
     .catch((error) => console.log(error));
 
   window.location.href = "/";
 };
 
 export const selectUserList = async (setUserList) => {
-  const urlStr = URL + "/users";
+  const urlStr = process.env.REACT_APP_URL_USER + "/users";
   await axios
     .get(urlStr)
     .then((response) => {
@@ -36,7 +32,7 @@ export const selectUserList = async (setUserList) => {
 
 export const getUserByUserEmail = async (setUser, userEmail) => {
   console.log(userEmail);
-  const urlStr = URL + "/" + userEmail;
+  const urlStr = process.env.REACT_APP_URL_USER + "/" + userEmail;
   await axios
     .get(urlStr)
     .then((response) => {
@@ -52,17 +48,14 @@ export const updateUser = async (userEmail, userName, userPassword) => {
   console.log(userEmail);
   console.log(userName);
   console.log(userPassword);
-  const urlStr = URL;
+  const urlStr = process.env.REACT_APP_URL_USER;
   const inputUser = {
     userEmail: userEmail,
     userName: userName,
     userPassword: userPassword,
   };
-  const headers = {
-    "Content-Type": "application/json",
-  };
   await axios
-    .put(urlStr, inputUser, { headers })
+    .put(urlStr, inputUser, process.env.REACT_APP_HEADER)
     .catch((error) => console.log(error));
 
   window.location.href = "/";
@@ -70,7 +63,7 @@ export const updateUser = async (userEmail, userName, userPassword) => {
 
 export const deleteUser = async (userEmail) => {
   console.log(userEmail);
-  const urlStr = URL + "/" + userEmail;
+  const urlStr = process.env.REACT_APP_URL_USER + "/" + userEmail;
   await axios.delete(urlStr).catch((error) => console.log(error));
 
   window.location.href = "/";

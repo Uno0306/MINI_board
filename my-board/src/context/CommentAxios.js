@@ -1,8 +1,7 @@
 import axios from "axios";
-const URL = "/api/comment";
 
 export const insertComment = async (commenter, commentContent, boardNo) => {
-  const urlStr = URL;
+  const urlStr = process.env.REACT_APP_URL_COMMENT;
   const inputComment = {
     commenter: commenter,
     commentContent: commentContent,
@@ -10,16 +9,13 @@ export const insertComment = async (commenter, commentContent, boardNo) => {
       boardNo: boardNo,
     },
   };
-  const headers = {
-    "Content-Type": "application/json",
-  };
   await axios
-    .post(urlStr, inputComment, { headers })
+    .post(urlStr, inputComment, process.env.REACT_APP_HEADER)
     .catch((error) => console.log(error));
 };
 
 export const selectCommentByBoardNo = async (boardNo, setComments) => {
-  const urlStr = URL + "/comments/" + boardNo;
+  const urlStr = process.env.REACT_APP_URL_COMMENT + "/comments/" + boardNo;
   await axios
     .get(urlStr)
     .then((response) => response.data)
@@ -48,7 +44,7 @@ export const updateComment = async (
   commentContent,
   boardNo
 ) => {
-  const urlStr = URL;
+  const urlStr = process.env.REACT_APP_URL_COMMENT;
   const inputComment = {
     commentNo: commentNo,
     commenter: commenter,
@@ -57,15 +53,12 @@ export const updateComment = async (
       boardNo: boardNo,
     },
   };
-  const headers = {
-    "Content-Type": "application/json",
-  };
   await axios
-    .put(urlStr, inputComment, { headers })
+    .put(urlStr, inputComment, process.env.REACT_APP_HEADER)
     .catch((error) => console.log(error));
 };
 
 export const deleteComment = async (commentNo) => {
-  const urlStr = URL + "/" + commentNo;
+  const urlStr = process.env.REACT_APP_URL_COMMENT + "/" + commentNo;
   await axios.delete(urlStr).catch((error) => console.log(error));
 };
