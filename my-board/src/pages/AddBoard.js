@@ -1,40 +1,9 @@
 import React from "react";
-import { InsertBoard } from "../context/BoardAxios";
+import { checkInsert } from "../context/BoardFunc";
 import { Scroll, Ptag, Text, TextArea, Button } from "../styles/StyleAB";
 import { handleOnInput } from "../context/BoardFunc";
 
 function AddBoard() {
-  function checkInsert() {
-    const title = document.getElementById("title");
-    const content = document.getElementById("content");
-    const contenter = document.getElementById("contenter");
-    const titleValue = title.value;
-    const contentValue = content.value;
-    const contenterValue = contenter.value;
-    if (titleValue === null || titleValue === "") {
-      alert("제목을 입력하시오!");
-    }
-    if (contentValue === null || contentValue === "") {
-      alert("내용을 입력하시오!");
-    }
-    if (contenterValue === null || contenterValue === "") {
-      alert("작성자이메일을 입력하시오!");
-    }
-
-    if (
-      !(
-        titleValue === null ||
-        titleValue === "" ||
-        contentValue === null ||
-        contentValue === "" ||
-        contenterValue === null ||
-        contenterValue === ""
-      )
-    ) {
-      InsertBoard(titleValue, contentValue, contenterValue);
-    }
-  }
-
   return (
     <Scroll>
       <h1>게시판 등록</h1>
@@ -68,7 +37,11 @@ function AddBoard() {
       <Button
         type="button"
         onClick={() => {
-          checkInsert();
+          checkInsert(
+            document.getElementById("title"),
+            document.getElementById("content"),
+            document.getElementById("contenter")
+          );
         }}
         value="등록"
       />

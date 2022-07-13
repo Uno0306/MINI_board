@@ -7,7 +7,7 @@ import {
   IButton,
 } from "../styles/StyleMB";
 
-function Alignment({ boardList, page, setPage }) {
+function PageList({ boardList, page, setPage }) {
   return (
     <Alignments>
       <PageDiv>
@@ -52,4 +52,4 @@ function Alignment({ boardList, page, setPage }) {
   );
 }
 
-export default Alignment;
+export default PageList;
