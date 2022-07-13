@@ -17,7 +17,7 @@ const Ptag = styled.p`
 function Footer() {
   return (
     <FooterDiv>
-      <Ptag>copyright </Ptag>
+      <Ptag>copyright U_no</Ptag>
     </FooterDiv>
   );
 }
