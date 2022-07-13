@@ -1,111 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { selectBoardList, minusPage, plusPage } from "../context/BoardAxios";
-import styled from "styled-components";
+import {
+  Scroll,
+  CommentBox,
+  BoardTable,
+  THead,
+  TdNo,
+  TdTitle,
+  TdCommenter,
+  TdDate,
+  Border,
+  BlackSpan,
+  Alignment,
+  PageDiv,
+  PageSpan,
+  PaginationSpan,
+  IButton,
+} from "../styles/StyleMB";
 import dateFormat from "dateformat";
-
-const Scroll = styled.div`
-  text-align: center;
-  height: 80vh;
-  max-height: 80vh;
-  overflow-y: auto;
-`;
-
-const CommentBox = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const BoardTable = styled.table`
-  width: 90%;
-  height: 60vh;
-  border-collapse: collapse;
-  BoardTable th,
-  td {
-    border: 2px solid deepskyblue;
-  }
-`;
-
-const THead = styled.thead`
-  height: 3em;
-  font-size: 30px;
-  font-weight: 550;
-`;
-
-const TdNo = styled.td`
-  width: 15vw;
-`;
-
-const TdTitle = styled.td`
-  width: 35vw;
-`;
-const TdCommenter = styled.td`
-  width: 25vw;
-`;
-
-const TdDate = styled.td`
-  width: 20vw;
-`;
-
-const Border = styled.span`
-  border: 3px solid rosybrown;
-  border-radius: 5px;
-  text-decoration: none;
-  padding: 5px;
-  background: turquoise;
-  &:hover {
-    border: 6px solid rosybrown;
-    color: black;
-  }
-`;
-
-const BlackSpan = styled.span`
-  color: black;
-  &:hover {
-    color: white;
-    background: turquoise;
-    border-radius: 10px;
-  }
-`;
-
-const Alignment = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const PageDiv = styled.div`
-  margin-top: 20px;
-`;
-
-const PageSpan = styled.span`
-  color: black;
-  &:hover {
-    color: white;
-    background: turquoise;
-    border-radius: 10px;
-  }
-`;
-
-const PaginationSpan = styled.span`
-  text-align: center;
-  border: 1px solid black;
-  padding: 5px 5px 5px 5px;
-  &[aria-current] {
-    background-color: mediumslateblue;
-    color: white;
-  }
-`;
-
-const IButton = styled.span`
-  text-align: center;
-  border: 1px solid black;
-  background: white;
-  padding: 5px 5px 5px 5px;
-  margin-top: 0;
-  &:hover {
-    border: 3px solid turquoise;
-  }
-`;
 
 function MainBoard() {
   const [page, setPage] = useState(1);
